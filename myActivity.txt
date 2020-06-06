@@ -1,0 +1,6 @@
+1 Hiking 150 800
+1 Jogging 30 300
+2 Badminton 60 500
+2 Walking 30 150
+3 Gym 60 600
+4 Walking 60 300
