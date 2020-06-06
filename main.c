@@ -2,6 +2,9 @@
 #include <string.h>
 #include <stdlib.h>
 
+/**
+ * Exam 2017-18 2a)
+ */
 struct fitness {
     int dayNumber;
     char activityName[11];
@@ -9,8 +12,17 @@ struct fitness {
     int caloriesBurnt;
 };
 
+/**
+ * Exam 2017-18 1b)
+ * The exam question asks to write the solution in main(), though it gets its own function for now.
+ */
 void flowchart();
 
+/**
+ * Exam 2017-18 2b)
+ * @param f A pointer to the first index in an array of fitness structs.
+ * @return The total number of activities, in the file myActivity.txt.
+ */
 int functionOne(struct fitness *f);
 
 void printListItem(struct fitness *f);
@@ -38,24 +50,26 @@ int functionOne(struct fitness *f) {
     char path[] = "/Users/David/Documents/CLion/CLion Projects/untitled/myActivity.txt";
     FILE *fin;
     if ((fin = fopen(path, "r")) != NULL) {
-        int line = 1;
-        int exit = 0;
+        int line = 1; // The line we're at in './myActivity.txt'.
+        int exit = 0; // A boolean for exiting while loop when needed.
         while (1) {
-            char str[255];
+            char str[255]; // A line from './myActivity.txt'.
             fgets(str, 255, fin); // Read in line.
-            if (strcmp(str, "") == 0) {
+            if (strcmp(str, "") == 0) { // Check for an empty line.
+                totalActivities = line - 1;
                 break;
             }
             char tmp[255];
-            strcpy(tmp, str);
-            if (strcmp(str, strtok(tmp, "\n")) == 0) { // Last line will have no '\n' at the end of line.
+            strcpy(tmp, str); // Make copy of str
+            if (strcmp(str, strtok(tmp, "\n")) == 0) { // Check for no '\n' at the end of a line.
                 exit = 1;
             }
-            char *pch;
-            pch = strtok(str, " ");
+            char *pch; // A buffer for getting the next string between whitespaces.
+            pch = strtok(str, " "); // Breaks string str into a token using the separator specified.
             int index = 1;
             while (pch != NULL) {
                 switch (index) {
+                    // atoi(), converts a string to an integer, if it fails, it returns 0 - requires stdlib.h
                     case 1:
                         f[(line - 1)].dayNumber = atoi(pch);
                         break;
@@ -69,7 +83,7 @@ int functionOne(struct fitness *f) {
                         f[(line - 1)].caloriesBurnt = atoi(pch);
                         break;
                 }
-                pch = strtok(NULL, " ");
+                pch = strtok(NULL, " "); // Breaks string str into a token using the separator specified.
                 index++;
             }
             printListItem(&f[(line - 1)]);
@@ -77,8 +91,8 @@ int functionOne(struct fitness *f) {
                 totalActivities = line;
                 break;
             }
-            strcpy(str, "");
-            strcpy(tmp, "");
+            strcpy(str, ""); // Set str to be the empty string
+            strcpy(tmp, ""); // Set tmp to eb the empty string
             line++;
         }
         fclose(fin);
@@ -88,10 +102,18 @@ int functionOne(struct fitness *f) {
     return totalActivities;
 }
 
+/**
+ * Helper function to functionOne().
+ * @param f A pointer to the fitness struct to have its values printed to standard output.
+ */
 void printListItem(struct fitness *f) {
     printf("%d %s %d %d\n", f->dayNumber, f->activityName, f->duration, f->caloriesBurnt);
 }
 
+/**
+ * Exam 2017-18 1b)
+ * The exam question asks to write the solution in main(), though it gets its own function for now.
+ */
 void flowchart() {
     printf("Number of rows:\n");
     int m = 1;
