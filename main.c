@@ -42,7 +42,7 @@ int main() {
 //    int totalActivities = totalActivity(myFitnessLog);
 //    printf("%d", totalActivities);
 
-    flowchart2();
+//    flowchart2();
 
     return 0;
 }
@@ -88,6 +88,7 @@ void flowchart2() {
 }
 
 /**
+ * Exam 2017-18 2b)
  * Open the file “myActivity.txt”.
  * Read the list from the file “myActivity.txt” into the array of struct.
  * Output the list to the screen.
