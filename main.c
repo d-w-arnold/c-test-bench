@@ -29,7 +29,7 @@ void printListItem(struct fitness *f);
 
 int main() {
 
-//    flowchart();
+    flowchart();
 
 //    struct fitness myFitnessLog[100];
 //    int totalActivities = functionOne(myFitnessLog);
@@ -148,9 +148,10 @@ void flowchart() {
         }
     }
 
+    printf("The difference is \n");
     for (int i = 0; i < m; i++) {
         for (int j = 0; j < n; j++) {
-            printf("The difference is %d ", diffArray[i][j]);
+            printf("%3d", diffArray[i][j]);
         }
         printf("\n");
     }
