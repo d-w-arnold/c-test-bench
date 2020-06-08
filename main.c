@@ -101,6 +101,15 @@ int main() {
 
     printf("");
 
+    /**
+     * Exam 2019-20 1biii)
+     */
+    int n;
+    printf("Please specify size of array:");
+    scanf("%d", &n);
+    float *arrayPtr;
+    arrayPtr = (float *) calloc(n, sizeof(float));
+
 //    flowchart();
 
 //    struct fitness myFitnessLog[MAX_NUM];
