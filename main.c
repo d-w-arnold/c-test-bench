@@ -214,6 +214,20 @@ int main() {
     }
     fclose(fin);
 
+    // ----------------
+
+//    flowchart();
+
+//    struct fitness myFitnessLog[MAX_NUM];
+//    int totalActivities = totalActivity(myFitnessLog);
+//    printf("%d", totalActivities);
+
+//    flowchart2();
+
+//    struct employee employees[MAX_NUM];
+//    int numAdded = appendFile(employees, 10);
+//    printf("%d", numAdded);
+
     return 0;
 }
 
