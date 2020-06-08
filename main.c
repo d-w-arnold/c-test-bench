@@ -26,6 +26,17 @@ struct employee {
 };
 
 /**
+ * Exam 2019-20 2a)
+ */
+struct walking {
+    int indexNumber;
+    char buildingName[100];
+    float distance; // Miles
+    int timeToDiamond; // Time taken to walk from the named building to the Diamond
+    int timeFromDiamond; // Time taken to walk from the Diamond to the named building
+};
+
+/**
  * Exam 2017-18 1b)
  * The exam question asks to write the solution in main(), though it gets its own function for now.
  */
@@ -140,9 +151,75 @@ int main() {
 //    float *arrayPtr;
 //    arrayPtr = (float *) calloc(N, sizeof(float));
 
+    /**
+     * Exam 2019-20 2b)
+     * Please note that you must program defensively at every possible point.
+     * If the user enters incorrect information, then the user needs to be asked to enter another value.
+     * To keep things simple, if the program asks the user to enter a number (e.g. 0‒7),
+     * then you only need to check the entered value against numbers (e.g. 8 is not allowed)
+     * and not characters (e.g. not a‒z, A‒Z).
+     * Do not show main(), or any other functions.
+     * Note: The structure is declared in main() and not in the Function 3.
+     *
+     * asks the student to select a building she has visited via its index number
+     * asks the student to select the time either walking from named building to the Diamond (enter 1) or walking from Diamond to named building (enter 2)
+     * prints to the screen the student’s chosen information
+     * loops to the start until the student opts to quit
+     * prints the total distance walked, and the total time taken in hours.
+     */
+    char path[] = "/Users/David/Documents/CLion/CLion Projects/untitled/walking.txt";
+    FILE *fin;
+    if ((fin = fopen(path, "r")) != NULL) {
+        while (1) {
+            int n;
+            printf("Please select a building via its index number (enter -1 to quit):\n");
+            scanf("%d", &n);
+            if (n == -1) {
+                //quit
+                break;
+            }
+            struct walking tw;
+            int found = 0;
+            while (fscanf(fin, "%d %s %f %d %d", &tw.indexNumber, tw.buildingName, &tw.distance, &tw.timeToDiamond,
+                          &tw.timeFromDiamond) == 5) {
+                if (tw.indexNumber == n) {
+                    found = 1;
+                    break;
+                }
+            }
+            if (found == 1) {
+                while (1) {
+                    int t;
+                    printf("Please select the time either: walking from named building to the Diamond (enter 1) or walking from Diamond to named building (enter 2)\n");
+                    scanf("%d", &t);
+                    if (t == 0) {
+                        printf("Time taken walking from named building to the Diamond: %d minutes", tw.timeToDiamond);
+                        break;
+                    } else if (t == 1) {
+                        printf("Time taken walking from Diamond to named building: %d minutes", tw.timeFromDiamond);
+                        break;
+                    } else {
+                        // Not 0 or 1
+                        printf("Please enter either 0 or 1\n");
+                    }
+                }
+                break;
+            } else {
+                printf("Could not find index number\n");
+                continue;
+            }
+        }
+    } else {
+        printf("Error opening file\n");
+    }
+    fclose(fin);
+
     return 0;
 }
 
+/**
+ * Exam 2019-20 1bii)
+ */
 float findVariance(float *diff, float *arrayData, float mean, float var) {
     int k;
     float tmpDiff = *diff;
