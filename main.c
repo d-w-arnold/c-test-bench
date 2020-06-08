@@ -14,6 +14,16 @@ struct fitness {
 };
 
 /**
+ * Exam 2018-19 2a)
+ */
+struct employee {
+    char name[100];
+    char surname[100];
+    int age;
+    int salary
+};
+
+/**
  * Exam 2017-18 1b)
  * The exam question asks to write the solution in main(), though it gets its own function for now.
  */
@@ -34,6 +44,15 @@ void printListItem(struct fitness *f);
  */
 void flowchart2();
 
+/**
+ * Exam 2018-19 2b)
+ * The exam question asks to write the solution in main(), though it gets its own function for now.
+ * @param e A pointer to the first index in an array of structs.
+ * @param numEmployees The number of employees already in the array of structs.
+ * @return The total number of employees by the end of the functions execution.
+ */
+int appendFile(struct employee *e, int numEmployees);
+
 int main() {
 
 //    flowchart();
@@ -44,7 +63,57 @@ int main() {
 
 //    flowchart2();
 
+//    struct employee employees[MAX_NUM];
+//    int numAdded = appendFile(employees, 10);
+//    printf("%d", numAdded);
+
     return 0;
+}
+
+/**
+ * Exam 2018-19 2b)
+ * Opens the file
+ * Asks the student how many new entries are to be added to the file
+ * Asks the student to enter the name, surname, age and salary the appropriate number of times.
+ * These new entries are added to the file
+ * The file is closed
+ * The total number of employees is returned to main.
+ */
+int appendFile(struct employee *e, int numEmployees) {
+    int i = 0;
+    int a;
+    int total = 0;
+    char path[] = "/Users/David/Documents/CLion/CLion Projects/untitled/employees.txt";
+    FILE *fin;
+    if ((fin = fopen(path, "a")) != NULL) {
+
+        do {
+            printf("\nNumber of employees to append:");
+            scanf("%d", &a);
+            total = numEmployees + a;
+            if (total > MAX_NUM) {
+                printf("You have exceeded %d employees in list. Cannot add more!\n", MAX_NUM);
+            }
+        } while (total > MAX_NUM);
+
+        for (i = 0; i < a; i++) {
+            printf("\nEnter name;\n");
+            scanf("%s", e[i].name);
+            printf("Enter surname;\n");
+            scanf("%s", (e[i].surname));
+            printf("Enter age;\n");
+            scanf("%d", &(e[i].age));
+            printf("Enter salary;\n");
+            scanf("%d", &(e[i].salary));
+            fprintf(fin, "\n%s %s %d %d", (e[i].name), e[i].surname, (e[i].age), (e[i].salary));
+        } // end for loop
+
+    } else {
+        printf("Error opening file\n");
+    }
+
+    fclose(fin);
+    return total;
 }
 
 /**
