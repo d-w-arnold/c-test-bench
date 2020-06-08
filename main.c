@@ -3,6 +3,7 @@
 #include <stdlib.h>
 
 #define MAX_NUM 100
+#define MAX 10
 
 /**
  * Exam 2017-18 2a)
@@ -65,50 +66,73 @@ int main() {
      * If the input sequence is too short, the program must print out a message to say at which position(s) no character has been provided.
      * The correct characters will be stored in a character array, and the four input characters will be stored in another character array.
      */
-    char sequence[4] = {'0', '0', '0', '0'};
-    char correctSequence[4] = {'A', 'C', 'S', 'E'};
-    int i = 0;
-    int j;
-    int k;
-    int stopFlag = 0;
-    printf("Enter 4 character sequence\n");
-    while (i < 4 && stopFlag != 1) {
-        sequence[i] = getchar();
-        if (sequence[i] == '\n') {
-            stopFlag = 1;
-        } else {
-            i++;
-        }
-    }
+//    char sequence[4] = {'0', '0', '0', '0'};
+//    char correctSequence[4] = {'A', 'C', 'S', 'E'};
+//    int i = 0;
+//    int j;
+//    int k;
+//    int stopFlag = 0;
+//    printf("Enter 4 character sequence\n");
+//    while (i < 4 && stopFlag != 1) {
+//        sequence[i] = getchar();
+//        if (sequence[i] == '\n') {
+//            stopFlag = 1;
+//        } else {
+//            i++;
+//        }
+//    }
+//
+//    i = 0;
+//    while (i < 4) {
+//        if (sequence[i] == '\n') {
+//            int currentPos = (i + 1);
+//            if (currentPos < 4) {
+//                for (int y = currentPos; y <= 4; y++) {
+//                    printf("No character has been provided at position %d\n", y);
+//                }
+//            }
+//            break;
+//        } else {
+//            if (sequence[i] != correctSequence[i]) {
+//                printf("%c is incorrect at position %d\n", sequence[i], (i + 1));
+//            }
+//            i++;
+//        }
+//    }
 
-    i = 0;
-    while (i < 4) {
-        if (sequence[i] == '\n') {
-            int currentPos = (i + 1);
-            if (currentPos < 4) {
-                for (int y = currentPos; y <= 4; y++) {
-                    printf("No character has been provided at position %d\n", y);
-                }
-            }
-            break;
-        } else {
-            if (sequence[i] != correctSequence[i]) {
-                printf("%c is incorrect at position %d\n", sequence[i], (i + 1));
-            }
-            i++;
-        }
+    /**
+     * Exam 2019-20 1bi)
+     */
+    float sum = 0;
+    float mean;
+    float var = 0;
+    float diff;
+    int i, j, k;
+    float arrayData[MAX];
+    printf("Enter 10 elements\n");
+    for (i = 0; i < 10; i++) {
+        scanf("%f", &arrayData[i]);
     }
-
-    printf("");
+    for (j = 0; j < 10; j++) {
+        sum = sum + arrayData[j];
+    }
+    mean = sum / 10;
+    for (k = 0; k < 10; k++) {
+        diff = arrayData[k] - mean;
+        var = var + (diff * diff);
+    }
+    printf("Mean = %f, Var / 10 = %f", mean, (var / 10));
 
     /**
      * Exam 2019-20 1biii)
      */
-    int n;
-    printf("Please specify size of array:");
-    scanf("%d", &n);
-    float *arrayPtr;
-    arrayPtr = (float *) calloc(n, sizeof(float));
+//    int N;
+//    printf("Please specify size of array:");
+//    scanf("%d", &N);
+//    float *arrayPtr;
+//    arrayPtr = (float *) calloc(N, sizeof(float));
+
+// ----------------
 
 //    flowchart();
 
