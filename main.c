@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
 
 #define MAX_NUM 100
 
@@ -54,6 +55,51 @@ void flowchart2();
 int appendFile(struct employee *e, int numEmployees);
 
 int main() {
+
+    /**
+     * Exam 2019-20 1a)
+     * Prompts a user to enter a security code by typing a sequence of four characters from the keyboard.
+     * The program must determine whether or not the sequence is correct,
+     * if it is not correct the program must print out a message for each incorrect character.
+     * The message should print the incorrect input character and its position in the sequence (i.e. position 1, 2, 3 or 4).
+     * If the input sequence is too short, the program must print out a message to say at which position(s) no character has been provided.
+     * The correct characters will be stored in a character array, and the four input characters will be stored in another character array.
+     */
+    char sequence[4] = {'0', '0', '0', '0'};
+    char correctSequence[4] = {'A', 'C', 'S', 'E'};
+    int i = 0;
+    int j;
+    int k;
+    int stopFlag = 0;
+    printf("Enter 4 character sequence\n");
+    while (i < 4 && stopFlag != 1) {
+        sequence[i] = getchar();
+        if (sequence[i] == '\n') {
+            stopFlag = 1;
+        } else {
+            i++;
+        }
+    }
+
+    i = 0;
+    while (i < 4) {
+        if (sequence[i] == '\n') {
+            int currentPos = (i + 1);
+            if (currentPos < 4) {
+                for (int y = currentPos; y <= 4; y++) {
+                    printf("No character has been provided at position %d\n", y);
+                }
+            }
+            break;
+        } else {
+            if (sequence[i] != correctSequence[i]) {
+                printf("%c is incorrect at position %d\n", sequence[i], (i + 1));
+            }
+            i++;
+        }
+    }
+
+    printf("");
 
 //    flowchart();
 
