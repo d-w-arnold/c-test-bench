@@ -55,6 +55,11 @@ void flowchart2();
  */
 int appendFile(struct employee *e, int numEmployees);
 
+/**
+ * Exam 2019-20 2bii)
+ */
+float findVariance(float *diff, float *arrayData, float mean, float var);
+
 int main() {
 
     /**
@@ -66,46 +71,45 @@ int main() {
      * If the input sequence is too short, the program must print out a message to say at which position(s) no character has been provided.
      * The correct characters will be stored in a character array, and the four input characters will be stored in another character array.
      */
-    char sequence[4] = {'0', '0', '0', '0'};
-    char correctSequence[4] = {'A', 'C', 'S', 'E'};
-    int i = 0;
-    int j;
-    int k;
-    int stopFlag = 0;
-    printf("Enter 4 character sequence\n");
-    while (i < 4 && stopFlag != 1) {
-        sequence[i] = getchar();
-        if (sequence[i] == '\n') {
-            stopFlag = 1;
-        } else {
-            i++;
-        }
-    }
-
-    int x = 0;
-    int y;
-    int currentPos;
-    while (x < 4) {
-        if (sequence[x] == '\n') {
-            currentPos = (x + 1);
-            if (currentPos <= 4) {
-                for (y = currentPos; y <= 4; y++) {
-                    printf("No character has been provided at position %d\n", y);
-                }
-            }
-            break;
-        } else {
-            if (sequence[x] != correctSequence[x]) {
-                printf("%c is incorrect at position %d\n", sequence[x], (x + 1));
-            }
-            x++;
-        }
-    }
-
-    printf("");
+//    char sequence[4] = {'0', '0', '0', '0'};
+//    char correctSequence[4] = {'A', 'C', 'S', 'E'};
+//    int i = 0;
+//    int j;
+//    int k;
+//    int stopFlag = 0;
+//    printf("Enter 4 character sequence\n");
+//    while (i < 4 && stopFlag != 1) {
+//        sequence[i] = getchar();
+//        if (sequence[i] == '\n') {
+//            stopFlag = 1;
+//        } else {
+//            i++;
+//        }
+//    }
+//
+//    int x = 0;
+//    int y;
+//    int currentPos;
+//    while (x < 4) {
+//        if (sequence[x] == '\n') {
+//            currentPos = (x + 1);
+//            if (currentPos <= 4) {
+//                for (y = currentPos; y <= 4; y++) {
+//                    printf("No character has been provided at position %d\n", y);
+//                }
+//            }
+//            break;
+//        } else {
+//            if (sequence[x] != correctSequence[x]) {
+//                printf("%c is incorrect at position %d\n", sequence[x], (x + 1));
+//            }
+//            x++;
+//        }
+//    }
 
     /**
      * Exam 2019-20 1bi)
+     * Exam 2019-20 1bii)
      */
 //    float sum = 0;
 //    float mean;
@@ -114,17 +118,17 @@ int main() {
 //    int i, j, k;
 //    float arrayData[MAX];
 //    printf("Enter 10 elements\n");
+//    // enter array elements
 //    for (i = 0; i < 10; i++) {
 //        scanf("%f", &arrayData[i]);
 //    }
+//    // find the mean
 //    for (j = 0; j < 10; j++) {
 //        sum = sum + arrayData[j];
 //    }
 //    mean = sum / 10;
-//    for (k = 0; k < 10; k++) {
-//        diff = arrayData[k] - mean;
-//        var = var + (diff * diff);
-//    }
+//    // find the variance
+//    var = findVariance(&diff, arrayData, mean, var);
 //    printf("Mean = %f, Var / 10 = %f", mean, (var / 10));
 
     /**
@@ -136,21 +140,19 @@ int main() {
 //    float *arrayPtr;
 //    arrayPtr = (float *) calloc(N, sizeof(float));
 
-// ----------------
-
-//    flowchart();
-
-//    struct fitness myFitnessLog[MAX_NUM];
-//    int totalActivities = totalActivity(myFitnessLog);
-//    printf("%d", totalActivities);
-
-//    flowchart2();
-
-//    struct employee employees[MAX_NUM];
-//    int numAdded = appendFile(employees, 10);
-//    printf("%d", numAdded);
-
     return 0;
+}
+
+float findVariance(float *diff, float *arrayData, float mean, float var) {
+    int k;
+    float tmpDiff = *diff;
+    float tmpVar = var;
+    for (k = 0; k < 10; k++) {
+        tmpDiff = arrayData[k] - mean;
+        tmpVar = tmpVar + (tmpDiff * tmpDiff);
+    }
+    *diff = tmpDiff;
+    return tmpVar;
 }
 
 /**
