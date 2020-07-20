@@ -111,6 +111,19 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named Assignment_2
+
+# Build rule for target.
+Assignment_2: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 Assignment_2
+.PHONY : Assignment_2
+
+# fast build rule for target.
+Assignment_2/fast:
+	$(MAKE) -f CMakeFiles/Assignment_2.dir/build.make CMakeFiles/Assignment_2.dir/build
+.PHONY : Assignment_2/fast
+
+#=============================================================================
 # Target rules for targets named Assignment_1
 
 # Build rule for target.
@@ -163,6 +176,33 @@ assignment_1.c.s:
 	$(MAKE) -f CMakeFiles/Assignment_1.dir/build.make CMakeFiles/Assignment_1.dir/assignment_1.c.s
 .PHONY : assignment_1.c.s
 
+assignment_2.o: assignment_2.c.o
+
+.PHONY : assignment_2.o
+
+# target to build an object file
+assignment_2.c.o:
+	$(MAKE) -f CMakeFiles/Assignment_2.dir/build.make CMakeFiles/Assignment_2.dir/assignment_2.c.o
+.PHONY : assignment_2.c.o
+
+assignment_2.i: assignment_2.c.i
+
+.PHONY : assignment_2.i
+
+# target to preprocess a source file
+assignment_2.c.i:
+	$(MAKE) -f CMakeFiles/Assignment_2.dir/build.make CMakeFiles/Assignment_2.dir/assignment_2.c.i
+.PHONY : assignment_2.c.i
+
+assignment_2.s: assignment_2.c.s
+
+.PHONY : assignment_2.s
+
+# target to generate assembly for a file
+assignment_2.c.s:
+	$(MAKE) -f CMakeFiles/Assignment_2.dir/build.make CMakeFiles/Assignment_2.dir/assignment_2.c.s
+.PHONY : assignment_2.c.s
+
 main.o: main.c.o
 
 .PHONY : main.o
@@ -196,6 +236,7 @@ help:
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
+	@echo "... Assignment_2"
 	@echo "... Assignment_1"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
@@ -203,6 +244,9 @@ help:
 	@echo "... assignment_1.o"
 	@echo "... assignment_1.i"
 	@echo "... assignment_1.s"
+	@echo "... assignment_2.o"
+	@echo "... assignment_2.i"
+	@echo "... assignment_2.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
