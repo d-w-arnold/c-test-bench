@@ -111,6 +111,19 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named Assignment_1
+
+# Build rule for target.
+Assignment_1: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 Assignment_1
+.PHONY : Assignment_1
+
+# fast build rule for target.
+Assignment_1/fast:
+	$(MAKE) -f CMakeFiles/Assignment_1.dir/build.make CMakeFiles/Assignment_1.dir/build
+.PHONY : Assignment_1/fast
+
+#=============================================================================
 # Target rules for targets named Main
 
 # Build rule for target.
@@ -122,6 +135,33 @@ Main: cmake_check_build_system
 Main/fast:
 	$(MAKE) -f CMakeFiles/Main.dir/build.make CMakeFiles/Main.dir/build
 .PHONY : Main/fast
+
+assignment_1.o: assignment_1.c.o
+
+.PHONY : assignment_1.o
+
+# target to build an object file
+assignment_1.c.o:
+	$(MAKE) -f CMakeFiles/Assignment_1.dir/build.make CMakeFiles/Assignment_1.dir/assignment_1.c.o
+.PHONY : assignment_1.c.o
+
+assignment_1.i: assignment_1.c.i
+
+.PHONY : assignment_1.i
+
+# target to preprocess a source file
+assignment_1.c.i:
+	$(MAKE) -f CMakeFiles/Assignment_1.dir/build.make CMakeFiles/Assignment_1.dir/assignment_1.c.i
+.PHONY : assignment_1.c.i
+
+assignment_1.s: assignment_1.c.s
+
+.PHONY : assignment_1.s
+
+# target to generate assembly for a file
+assignment_1.c.s:
+	$(MAKE) -f CMakeFiles/Assignment_1.dir/build.make CMakeFiles/Assignment_1.dir/assignment_1.c.s
+.PHONY : assignment_1.c.s
 
 main.o: main.c.o
 
@@ -156,9 +196,13 @@ help:
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
+	@echo "... Assignment_1"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... Main"
+	@echo "... assignment_1.o"
+	@echo "... assignment_1.i"
+	@echo "... assignment_1.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

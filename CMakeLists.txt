@@ -4,3 +4,4 @@ project(C_Test_Bench C)
 set(CMAKE_C_STANDARD 99)
 
 add_executable(Main main.c)
+add_executable(Assignment_1 assignment_1.c)
