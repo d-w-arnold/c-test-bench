@@ -1,4 +1,4 @@
-# C_Test_Bench
+# C Language Test Bench
 
 A test bench to practice C programming, using some C exam past paper questions and C assignments from Sheffield university.
 
